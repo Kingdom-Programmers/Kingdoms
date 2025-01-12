@@ -117,6 +117,8 @@ class MfFactionPermissions(private val plugin: MedievalFactions) {
     val listMembers = parse("LIST_MEMBERS")!!
     val createRole = parse("CREATE_ROLE")!!
     val setDefaultRole = parse("SET_DEFAULT_ROLE")!!
+    val approveApp = parse("APPROVE_APP")!!
+    val denyApp = parse("DENY_APP")!!
     fun setRolePermission(permission: MfFactionPermission) = parse("SET_ROLE_PERMISSION(${permission.name})")!!
 
     fun permissionsFor(factionId: MfFactionId, roles: MfFactionRoles): List<MfFactionPermission> = permissionsFor(factionId, roles.map { it.id })

@@ -111,6 +111,18 @@ commands:
       /duel cancel [player] - Cancels or turns down a duel
     aliases: [duell]
     usage: /<command> [challenge|accept|cancel]
+  apply:
+    description: Sends an application to a faction
+    usage: /<command> <faction>
+  showapps:
+    description: Shows the list of applications to your faction
+    usage: /<command>
+  approveapp:
+    description: Approves a player's application to your faction
+    usage: /<command> <player>
+  denyapp:
+    description: Denies a player's application to your faction
+    usage: /<command> <player>
 permissions:
   mf.help:
     description: View a list of helpful commands.
@@ -295,6 +307,9 @@ permissions:
   mf.flag.set:
     description: Allows setting faction flags
     default: true
+  mf.apply:
+    description: Allows applying to a faction
+    default: true
   mf.bypass:
     description: Allows bypassing faction protections
     default: op
@@ -309,6 +324,15 @@ permissions:
     default: true
   mf.duel:
     description: Allows duelling
+    default: true
+  mf.showapps:
+    description: Shows the list of applications to your faction
+    default: true
+  mf.approveapp:
+    description: Approves a player's application to your faction
+    default: true
+  mf.denyapp:
+    description: Denies a player's application to your faction
     default: true
   mf.relationship.view:
     description: Allows viewing faction relationships

@@ -97,6 +97,12 @@ class MfFactionJoinCommand(private val plugin: MedievalFactions) : CommandExecut
                 sender.sendMessage(
                     "$GREEN${plugin.language["CommandFactionJoinSuccess", faction.name]}"
                 )
+                try {
+                    factionService.cancelAllApplicationsForPlayer(mfPlayer)
+                } catch (e: Exception) {
+                    sender.sendMessage("${org.bukkit.ChatColor.RED}${plugin.language["CommandFactionApproveAppFailedToCancelApplications"]}") // TODO: add to language file
+                    plugin.logger.log(Level.SEVERE, "Failed to cancel applications: ${e.message}", e)
+                }
             }
         )
         return true
