@@ -26,7 +26,8 @@ data class MfFaction(
     val bonusPower: Double = 0.0,
     val autoclaim: Boolean = false,
     val roles: MfFactionRoles = MfFactionRoles.defaults(plugin, id),
-    val defaultPermissionsByName: Map<String, Boolean> = plugin.factionPermissions.permissionsFor(id, roles).associate { it.name to it.default }
+    val defaultPermissionsByName: Map<String, Boolean> = plugin.factionPermissions.permissionsFor(id, roles).associate { it.name to it.default },
+    val applications: List<MfFactionApplication> = emptyList()
 ) {
 
     val memberPower

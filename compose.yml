@@ -5,3 +5,5 @@ services:
     container_name: mf-test-mc-server
     ports:
       - "25565:25565"
+    volumes:
+      - ./testmcserver:/testmcserver

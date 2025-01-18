@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.dansplugins"
-version = "5.3.1-SNAPSHOT"
+version = "5.4.0"
 
 def repoUsername = ""
 def repoPassword = ""
@@ -36,7 +36,7 @@ configurations {
 }
 
 dependencies {
-    implementation 'me.clip:placeholderapi:2.11.2'
+    implementation 'me.clip:placeholderapi:2.11.6'
     implementation 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
     implementation 'us.dynmap:dynmap-api:2.2'
     implementation 'org.bstats:bstats-bukkit:3.0.0'
@@ -57,14 +57,26 @@ dependencies {
     implementation 'com.rpkit:rpk-lock-lib-bukkit:2.3.2:all'
     implementation 'com.dansplugins:ponder-bukkit:2.0.0'
     implementation 'com.dansplugins:ponder-commands:2.0.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
-    testImplementation 'io.mockk:mockk:1.13.2'
     jooqGenerator 'org.jooq:jooq-meta-extensions:3.17.4'
+
+    // Use the Kotlin JUnit 5 integration.
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("org.mockito:mockito-core:4.0.0")
+    testImplementation("org.mockito:mockito-inline:4.0.0")
+
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
     jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -166,10 +178,6 @@ artifacts {
     archives shadowJar
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 publishing {
     repositories {
         maven {
@@ -191,4 +199,9 @@ publishing {
             from components.java
         }
     }
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
 }

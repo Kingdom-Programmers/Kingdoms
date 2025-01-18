@@ -49,6 +49,8 @@ data class MfFactionRoles(
                     put(plugin.factionPermissions.setRolePermission(plugin.factionPermissions.modifyRole(member.id)).name, true)
                     put(plugin.factionPermissions.setRolePermission(plugin.factionPermissions.listMembers).name, true)
                     put(plugin.factionPermissions.createRole.name, true)
+                    put(plugin.factionPermissions.approveApp.name, true)
+                    put(plugin.factionPermissions.denyApp.name, true)
                 }
             )
             val ownerId = MfFactionRoleId.generate()
@@ -108,7 +110,8 @@ data class MfFactionRoles(
                     put(plugin.factionPermissions.listMembers.name, true)
                     put(plugin.factionPermissions.createRole.name, true)
                     put(plugin.factionPermissions.setDefaultRole.name, true)
-
+                    put(plugin.factionPermissions.approveApp.name, true)
+                    put(plugin.factionPermissions.denyApp.name, true)
                     putAll(
                         plugin.factionPermissions.permissionsFor(factionId, listOf(member.id, officer.id, ownerId))
                             .map { permission -> plugin.factionPermissions.setRolePermission(permission).name to true }
