@@ -110,7 +110,7 @@ import javax.sql.DataSource
 import kotlin.math.floor
 import kotlin.math.roundToInt
 
-class MedievalFactions : JavaPlugin() {
+open class MedievalFactions : JavaPlugin() {
 
     private lateinit var dataSource: DataSource
 

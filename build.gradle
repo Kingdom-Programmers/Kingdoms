@@ -29,6 +29,7 @@ repositories {
     maven { url 'https://repo.maven.apache.org/maven2/' }
     maven { url 'https://repo.rpkit.com/repository/maven-public/' }
     maven { url 'https://repo.dansplugins.com/repository/maven-public/' }
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
 }
 
 configurations {
@@ -57,13 +58,14 @@ dependencies {
     implementation 'com.rpkit:rpk-lock-lib-bukkit:2.3.2:all'
     implementation 'com.dansplugins:ponder-bukkit:2.0.0'
     implementation 'com.dansplugins:ponder-commands:2.0.0'
+
     jooqGenerator 'org.jooq:jooq-meta-extensions:3.17.4'
 
     // Use the Kotlin JUnit 5 integration.
+    testImplementation("com.github.seeseemelk:MockBukkit-v1.19:2.147.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.mockito:mockito-core:4.0.0")
     testImplementation("org.mockito:mockito-inline:4.0.0")
-
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
